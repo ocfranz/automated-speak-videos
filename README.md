@@ -37,6 +37,23 @@ bunx remotion render
 bunx remotion upgrade
 ```
 
+## English Speaking Challenge videos
+
+Vertical (1080x1920) practice videos for TikTok / YouTube Shorts / Reels, at least 45s long.
+Each video: Intro -> Round 1 LISTEN (model voice + synced highlight) -> Round 2 YOUR TURN (read aloud) -> Round 3 SPEED ROUND -> Outro.
+
+1. Add prompts to `src/prompts.json` (`id`, `topic`, `level`, `text`). 60-90 words works best.
+2. Render:
+
+```console
+node scripts/generate.mjs                       # all prompts -> out/<id>.mp4
+node scripts/generate.mjs coffee-shop           # only one prompt
+node scripts/generate.mjs --handle @myenglish --voice Daniel --speed-wpm 240
+node scripts/generate.mjs --no-voice            # no model voice
+```
+
+The voice uses the built-in macOS `say` command (list voices: `say -v '?' | grep en_`).
+
 ## Captioning
 
 Replace the `sample-video.mp4` with your video file.

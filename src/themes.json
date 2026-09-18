@@ -1,0 +1,106 @@
+[
+  {
+    "id": "ember",
+    "backgroundColor": "#0F0C0A",
+    "glowColor": "#2E2018",
+    "textColor": "#F5EEE6",
+    "accentColor": "#E8703A",
+    "titleColors": [
+      "#E8703A",
+      "#FACC15",
+      "#FB7185",
+      "#F5EEE6"
+    ]
+  },
+  {
+    "id": "midnight",
+    "backgroundColor": "#070B14",
+    "glowColor": "#16304A",
+    "textColor": "#EAF2FB",
+    "accentColor": "#38BDF8",
+    "titleColors": [
+      "#38BDF8",
+      "#A5B4FC",
+      "#F472B6",
+      "#FDE047"
+    ]
+  },
+  {
+    "id": "forest",
+    "backgroundColor": "#08110C",
+    "glowColor": "#173A26",
+    "textColor": "#ECF5EE",
+    "accentColor": "#4ADE80",
+    "titleColors": [
+      "#4ADE80",
+      "#FDE047",
+      "#86EFAC",
+      "#FDBA74"
+    ]
+  },
+  {
+    "id": "grape",
+    "backgroundColor": "#0E0A16",
+    "glowColor": "#35205A",
+    "textColor": "#F3EEFB",
+    "accentColor": "#C084FC",
+    "titleColors": [
+      "#C084FC",
+      "#F472B6",
+      "#67E8F9",
+      "#FDE047"
+    ]
+  },
+  {
+    "id": "rose",
+    "backgroundColor": "#140A0E",
+    "glowColor": "#4A1A2A",
+    "textColor": "#FBEFF2",
+    "accentColor": "#FB7185",
+    "titleColors": [
+      "#FB7185",
+      "#FDBA74",
+      "#F9A8D4",
+      "#FDE047"
+    ]
+  },
+  {
+    "id": "gold",
+    "backgroundColor": "#100E08",
+    "glowColor": "#3A3014",
+    "textColor": "#FAF6E8",
+    "accentColor": "#FACC15",
+    "titleColors": [
+      "#FACC15",
+      "#FB923C",
+      "#F5F5F4",
+      "#4ADE80"
+    ]
+  },
+  {
+    "id": "teal",
+    "backgroundColor": "#061212",
+    "glowColor": "#0F3B3B",
+    "textColor": "#E8F7F6",
+    "accentColor": "#2DD4BF",
+    "titleColors": [
+      "#2DD4BF",
+      "#FDE047",
+      "#F472B6",
+      "#7DD3FC"
+    ]
+  },
+  {
+    "id": "paper",
+    "backgroundColor": "#F4EFE6",
+    "glowColor": "#FFFFFF",
+    "textColor": "#1C1917",
+    "accentColor": "#DC2626",
+    "titleColors": [
+      "#DC2626",
+      "#2563EB",
+      "#16A34A",
+      "#9333EA"
+    ]
+  }
+]
