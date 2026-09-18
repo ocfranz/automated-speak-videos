@@ -25,7 +25,9 @@ const flag = (name, fallback) => {
   const i = args.lastIndexOf(`--${name}`);
   return i === -1 ? fallback : args[i + 1];
 };
-const title = flag("title", null);
+const titleOverride = flag("title", null);
+// Output file name: "<FILE_PREFIX> — <prompt title>.mp4"
+const FILE_PREFIX = "Speak fast and clear";
 const speedWpm = flag("speed-wpm", null);
 const introSrc = args.includes("--no-intro") ? null : "intro.mp3";
 const themeId = flag("theme", null);
@@ -103,6 +105,23 @@ for (const p of selected) {
 const nextTheme = themeId ? () => themes.find((t) => t.id === themeId) : deck(themes);
 const nextFont = fontId ? () => fontId : deck(fonts);
 
+// Strip characters that aren't allowed in file names (macOS / Windows)
+const safeFileName = (value) =>
+  value
+    .replace(/[\\/:]/g, "-")
+    .replace(/[*?"<>|]/g, "")
+    .replace(/\s+/g, " ")
+    .trim();
+
+// Don't overwrite an existing video with the same title: add " (2)", " (3)", ...
+const uniqueName = (base) => {
+  let name = base;
+  for (let n = 2; existsSync(path.join(outDir, `${name}.mp4`)); n++) {
+    name = `${base} (${n})`;
+  }
+  return name;
+};
+
 const propsDir = path.join(outDir, "props");
 mkdirSync(propsDir, { recursive: true });
 const manifestFile = path.join(outDir, "manifest.json");
@@ -114,12 +133,13 @@ for (const prompt of selected) {
 
   // Anything not set here falls back to DEFAULT_STYLE in src/SpeakingChallenge/theme.ts.
   // A prompt can override style per video, e.g. { "speedWpm": 130, "accentColor": "#38BDF8" }.
-  const { id, category, topic, level, ...promptStyle } = prompt;
+  // `title` in prompts.json is the story title (used for the file name), not the on-screen title
+  const { id, category, topic, level, title: promptTitle, ...promptStyle } = prompt;
   const props = { ...colors, titleColor: pick(titleColors), font, ...promptStyle, introSrc };
-  if (title) props.title = title;
+  if (titleOverride) props.title = titleOverride;
   if (speedWpm) props.speedWpm = Number(speedWpm);
 
-  const name = `${id}-${theme}-${font}`;
+  const name = uniqueName(`${FILE_PREFIX} — ${safeFileName(promptTitle ?? topic ?? id)}`);
   const propsFile = path.join(propsDir, `${name}.json`);
   const outFile = path.join(outDir, `${name}.mp4`);
   writeFileSync(propsFile, JSON.stringify(props, null, 2));
